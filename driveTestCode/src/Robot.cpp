@@ -95,11 +95,24 @@ public:
 
 	void TeleopPeriodic() {
 
-		rightStickValue = stick.GetRawAxis(1);
-		leftStickValue = stick.GetRawAxis(2);
-		m_robotDrive->ArcadeDrive(-rightStickValue, -leftStickValue);
-		m_robotDrive2->ArcadeDrive(-rightStickValue, -leftStickValue);
-		m_robotDrive3->ArcadeDrive(-rightStickValue, -leftStickValue);
+//		if (stick.GetRawButton(1)) {
+//			rightStickValue = stick.GetRawAxis(1) * 0.25;
+//		}
+//		else if (!stick.GetRawButton(1)) {
+			rightStickValue = stick.GetRawAxis(1);
+//		}
+
+//		if (stick.GetRawButton(2)) {
+//			leftStickValue = 0;
+//		}
+//		else if (!stick.GetRawButton(2)) {
+			leftStickValue = stick.GetRawAxis(2);
+//		}
+
+
+		m_robotDrive->ArcadeDrive(-rightStickValue, leftStickValue);
+		m_robotDrive2->ArcadeDrive(-rightStickValue, leftStickValue);
+		m_robotDrive3->ArcadeDrive(-rightStickValue, leftStickValue);
 
 		double m1 = srx1->Get();
 		double m2 = srx12->Get();
